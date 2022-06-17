@@ -4,6 +4,8 @@ module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'schewidge',
     environment,
+    clinicianId: process.env.CLINICIAN_ID,
+    portalURL: process.env.CLIENT_PORTAL_BASE_URL,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {

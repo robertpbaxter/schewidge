@@ -34,6 +34,7 @@
     "ember-cli-app-version": "^5.0.0",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-dependency-checker": "^3.2.0",
+    "ember-cli-dotenv": "^3.1.0",
     "ember-cli-htmlbars": "^5.7.2",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-sri": "^2.1.1",
@@ -54,7 +55,10 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-qunit": "^6.2.0",
+    "glob": "^4.0.5",
+    "http-proxy": "^1.1.6",
     "loader.js": "^4.7.0",
+    "morgan": "^1.3.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
@@ -65,9 +69,5 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {
-    "g": "^2.0.1",
-    "watchman": "^1.0.0"
   }
 }
