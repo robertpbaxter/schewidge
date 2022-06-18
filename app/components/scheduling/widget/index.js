@@ -7,48 +7,81 @@ import { tracked } from '@glimmer/tracking';
 export default class SchedulingWidgetComponent extends Component {
   @service store;
 
+  clinicianId = ENV.clinicianId;
+
   @tracked clinician;
-  @tracked service;
-  @tracked office;
-  @tracked dateTime;
+  @tracked offices;
   @tracked personalInformation;
+  @tracked selectedDateTime;
+  @tracked selectedOffice;
+  @tracked selectedService;
+  @tracked services;
 
   constructor(owner, args) {
     super(owner, args);
+
     this.getClinician();
+    this.getServices();
   }
 
   get isSelectingService() {
-    return !!this.clinician && !this.service;
+    return !!this.clinician && !this.selectedService;
   }
 
   get isSelectingLocation() {
-    return !!this.service && !this.location;
+    return !!this.selectedService && !this.selectedLocation;
   }
 
   get isSelectingDateTime() {
-    return !!this.location && !this.dateTime;
+    return !!this.selectedLocation && !this.selectedDateTime;
   }
 
   async getClinician() {
     try {
-      this.clinician = await this.store.find('clinician', ENV.clinicianId);
+      this.clinician = await this.store.find('clinician', this.clinicianId);
     } catch (error) {
       // Architectural necessity: The catch block would pass the error into a notification service that throws popups in front of the user, dumps the error into the console, and logs the error with a service like airbrake so we can monitor errors on prod
       console.error(error);
     }
   }
 
-  @action
-  reselectService() {
-    this.service = null;
+  async getOffices() {
+    try {
+      this.offices = await this.store.query('office', {
+        filter: {
+          clinicianId: this.clinicianId,
+          cptCodeId: this.selectedService.id,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
-  @action
-  reselectLocation() {
-    this.location = null;
+
+  async getServices() {
+    try {
+      this.services = await this.store.query('cpt-code', {
+        filter: {
+          clinicianId: this.clinicianId,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
+
+  @action
+  selectService(service) {
+    this.selectedService = service;
+  }
+
+  @action
+  selectLocation(location) {
+    this.selectedLocation = location;
+  }
+
   @action
   reselectDateTime() {
-    this.location = null;
+    this.selectedDateTime = location;
   }
 }

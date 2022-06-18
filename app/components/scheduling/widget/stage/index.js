@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 
 export default class SchedulingWidgetStageComponent extends Component {
   get isDisabled() {
-    return !this.args.selection && !this.args.isActive;
+    return !this.args.primaryValue && !this.args.isActive;
   }
 
   @action

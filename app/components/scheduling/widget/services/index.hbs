@@ -1,0 +1,17 @@
+{{#each @services as |service|}}
+  <div class="service-card">
+    <div class="card-body">
+      <h1>{{service.description}}</h1>
+      <h3>{{service.duration}} minutes</h3>
+    </div>
+    <div class="card-actions">
+      <button
+        class="btn"
+        type="button"
+        {{on "click" (fn @selectService service)}}
+      >
+        Select
+      </button>
+    </div>
+  </div>
+{{/each}}

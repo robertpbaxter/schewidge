@@ -2,21 +2,20 @@
 
 /* COLORS */
 :root {
-  --bg-light-gray: #ebedee;
-  --bg-white: #ffffff;
-  --text-blue: #5687bd;
-  --text-dark-gray: #454d53;
-  --text-dark-gray: #454d53;
-  --text-gray: #98a0a9;
-  --text-light-gray: #ebedee;
+  --light-gray: #ebedee;
+  --white: #ffffff;
+  --blue: #5687bd;
+  --dark-gray: #454d53;
+  --gray: #98a0a9;
+  --light-gray: #ebedee;
 }
 
 body {
-  background: var(--bg-white);
+  background: var(--white);
   display: flex;
   flex-direction: column;
   font-family: sans-serif !important;
-  font: var(--text-dark-gray);
+  font: var(--dark-gray);
   height: 100vh;
   margin: 0;
 }
@@ -24,6 +23,7 @@ body {
 h1 {
   font-size: 1.2em;
   font-weight: 500;
+  letter-spacing: 1px;
   margin: 0;
   opacity: 0.7;
   padding: 10px;
@@ -33,18 +33,20 @@ h2 {
   font-size: 1em;
   font-weight: bold;
   margin: 0;
-  opacity: 0.3;
-  padding: 10px;
+  padding: 11px;
 }
 
 h3 {
+  font-size: 0.8em;
+  font-weight: 400;
   margin: 0;
+  padding: 0 0 10px 10px;
 }
 
 /* NAVBAR */
 .header {
   align-items: flex-end;
-  border-bottom: 1px solid var(--text-light-gray);
+  border-bottom: 1px solid var(--light-gray);
   display: flex;
   height: 50px;
   justify-content: center;
@@ -60,15 +62,28 @@ h3 {
 
 .breadcrumb-2 {
   flex-grow: 1;
-  font: var(--text-gray);
+  color: var(--gray);
+  margin: 0 auto;
 }
 
-button.btn-icon {
+.btn-icon {
   background: transparent;
   border: none;
+  cursor: pointer;
   height: 40px;
   margin: 5px;
   width: 40px;
+}
+
+.btn {
+  background: var(--blue);
+  border-radius: 3px;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 0.9em;
+  height: 40px;
+  width: 70px;
 }
 
 /* WIDGET */
@@ -78,13 +93,16 @@ button.btn-icon {
 }
 
 .sidebar {
-  border-right: 1px solid var(--text-light-gray);
+  border-right: 1px solid var(--light-gray);
+  margin-top: 10px;
   padding: 25px 15px;
   width: 220px;
 }
 
 .stage-wrapper {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .stage {
@@ -93,26 +111,28 @@ button.btn-icon {
   font-size: 0.8em;
   letter-spacing: 1px;
   text-transform: uppercase;
+  padding-bottom: 5px;
 }
 
 .active .circle {
-  border: 2px solid var(--text-blue);
-  color: var(--text-blue);
+  border: 2px solid var(--blue);
+  color: var(--blue);
 }
 
 .disabled {
-  color: var(--text-light-gray);
+  color: var(--light-gray);
 }
 .disabled .circle {
-  border-color: var(--text-light-gray);
-  color: var(--text-light-gray);
+  border-color: var(--light-gray);
+  color: var(--light-gray);
 }
 
 .text-link {
-  color: var(--text-blue);
+  flex: 0 0 auto;
+  color: var(--blue);
   font-size: 0.8em;
   font-weight: 300;
-  margin-left: 34px;
+  padding: 0 0 5px 34px;
 }
 
 .btn-link {
@@ -120,9 +140,29 @@ button.btn-icon {
 }
 
 .object-page {
-  background: var(--bg-light-gray);
+  background: var(--light-gray);
   flex: 1 1 auto;
+  padding: 25px;
+}
+
+.service-card {
+  align-items: center;
+  background: var(--white);
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px var(--light-gray);
+  display: flex;
+  margin-bottom: 20px;
   padding: 15px;
+}
+
+.card-body {
+  flex: 1 1 auto;
+}
+
+.card-actions {
+  flex: 1 1 auto;
+  max-width: 100px;
+  text-align: center;
 }
 
 /* ICONS */
@@ -130,9 +170,9 @@ button.btn-icon {
 .circle {
   background: transparent;
   border-radius: 50%;
-  border: 2px solid var(--text-dark-gray);
+  border: 2px solid var(--dark-gray);
   height: 12px;
-  line-height: 1.1em;
+  line-height: 1em;
   margin: 0 5px;
   padding: 3px;
   text-align: center;
@@ -140,8 +180,9 @@ button.btn-icon {
 }
 
 .icon-close {
+  cursor: pointer;
   position: absolute;
-  right: 36px;
+  right: 40px;
   top: 20px;
 }
 .icon-close:before,
@@ -151,7 +192,7 @@ button.btn-icon {
   content: ' ';
   height: 15px;
   width: 2px;
-  background: var(--text-dark-gray);
+  background: var(--dark-gray);
 }
 .icon-close:before {
   align-items: stretch;
