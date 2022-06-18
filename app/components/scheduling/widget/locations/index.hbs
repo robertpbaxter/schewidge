@@ -1,0 +1,26 @@
+<div class="locations-wrapper">
+  {{#each @locations as |location|}}
+    <div class="location-card">
+      <GMap
+        @disableDefaultUI={{true}}
+        @gestureHandling="none"
+        @keyboardShortcuts={{false}}
+        @lat={{location.geolocation.lat}}
+        @lng={{location.geolocation.lng}}
+      />
+      <h1>{{location.name}}</h1>
+      {{#if location.hasPhysicalAddress}}
+        <p>{{location.street}}</p>
+        <p>{{location.cityStateZip}}</p>
+      {{/if}}
+      <p>{{location.phone}}</p>
+      <button
+        class="btn"
+        type="button"
+        {{on "click" (fn @selectLocation location)}}
+      >
+        Select
+      </button>
+    </div>
+  {{/each}}
+</div>

@@ -17,7 +17,7 @@
       @index={{3}}
       @isActive={{this.isSelectingLocation}}
       @label="select a location"
-      @primaryValue={{this.selectedLocation}}
+      @primaryValue={{this.selectedLocation.name}}
       @reselect={{this.selectLocation}}
     />
     <Scheduling::Widget::Stage
@@ -38,6 +38,12 @@
       <Scheduling::Widget::Services
         @selectService={{this.selectService}}
         @services={{this.services}}
+      />
+    {{/if}}
+    {{#if this.isSelectingLocation}}
+      <Scheduling::Widget::Locations
+        @locations={{this.locations}}
+        @selectLocation={{this.selectLocation}}
       />
     {{/if}}
   </div>

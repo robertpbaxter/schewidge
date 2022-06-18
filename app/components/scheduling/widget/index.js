@@ -10,10 +10,10 @@ export default class SchedulingWidgetComponent extends Component {
   clinicianId = ENV.clinicianId;
 
   @tracked clinician;
-  @tracked offices;
+  @tracked locations;
   @tracked personalInformation;
   @tracked selectedDateTime;
-  @tracked selectedOffice;
+  @tracked selectedLocation;
   @tracked selectedService;
   @tracked services;
 
@@ -45,12 +45,12 @@ export default class SchedulingWidgetComponent extends Component {
     }
   }
 
-  async getOffices() {
+  async getOffices(cptCodeId) {
     try {
-      this.offices = await this.store.query('office', {
+      return await this.store.query('office', {
         filter: {
           clinicianId: this.clinicianId,
-          cptCodeId: this.selectedService.id,
+          cptCodeId,
         },
       });
     } catch (error) {
@@ -71,8 +71,14 @@ export default class SchedulingWidgetComponent extends Component {
   }
 
   @action
-  selectService(service) {
+  async selectService(service) {
+    // Clear the location when backing up in the menu
+    this.selectedLocation = undefined;
+    // Passing in undefined clears the selected value and rewinds to the service step
     this.selectedService = service;
+    if (service) {
+      this.locations = await this.getOffices(service.id);
+    }
   }
 
   @action

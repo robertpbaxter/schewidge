@@ -25,6 +25,14 @@ module.exports = function (environment) {
     },
   };
 
+  ENV['ember-google-maps'] = {
+    key: process.env.GOOGLE_MAPS_API_KEY,
+    language: 'en',
+    protocol: 'https',
+    region: 'US',
+    version: '3.41',
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

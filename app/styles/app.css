@@ -7,7 +7,6 @@
   --blue: #5687bd;
   --dark-gray: #454d53;
   --gray: #98a0a9;
-  --light-gray: #ebedee;
 }
 
 body {
@@ -33,7 +32,7 @@ h2 {
   font-size: 1em;
   font-weight: bold;
   margin: 0;
-  padding: 11px;
+  padding: 10px;
 }
 
 h3 {
@@ -41,6 +40,10 @@ h3 {
   font-weight: 400;
   margin: 0;
   padding: 0 0 10px 10px;
+}
+
+p {
+  margin: 5px 10px;
 }
 
 /* NAVBAR */
@@ -83,6 +86,7 @@ h3 {
   cursor: pointer;
   font-size: 0.9em;
   height: 40px;
+  min-height: 40px;
   width: 70px;
 }
 
@@ -95,8 +99,9 @@ h3 {
 .sidebar {
   border-right: 1px solid var(--light-gray);
   margin-top: 10px;
+  min-width: 240px;
   padding: 25px 15px;
-  width: 220px;
+  width: 240px;
 }
 
 .stage-wrapper {
@@ -163,6 +168,36 @@ h3 {
   flex: 1 1 auto;
   max-width: 100px;
   text-align: center;
+}
+
+.locations-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.location-card {
+  align-items: flex-start;
+  background: var(--white);
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px var(--light-gray);
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  height: 400px;
+  margin: 20px;
+  width: 250px;
+  padding: 15px;
+}
+
+.location-card .btn {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.ember-google-map {
+  height: 300px;
+  width: 250px;
 }
 
 /* ICONS */
