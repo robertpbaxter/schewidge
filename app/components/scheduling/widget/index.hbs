@@ -1,0 +1,38 @@
+<div class="widget">
+  <div class="sidebar">
+    <Scheduling::Widget::Stage
+      @index={{1}}
+      @label="clinician"
+      @selection={{this.clinician.nameWithTitle}}
+    />
+    <Scheduling::Widget::Stage
+      @index={{2}}
+      @isActive={{this.isSelectingService}}
+      @label="select a service"
+      @selection={{this.service}}
+      @reselect={{this.reselectService}}
+    />
+    <Scheduling::Widget::Stage
+      @index={{3}}
+      @isActive={{this.isSelectingLocation}}
+      @label="select a location"
+      @selection={{this.office}}
+      @reselect={{this.reselectLocation}}
+    />
+    <Scheduling::Widget::Stage
+      @index={{4}}
+      @isActive={{this.isSelectingDateTime}}
+      @label="select date & time"
+      @selection={{this.dateTime}}
+      @reselect={{this.reselectDateTime}}
+    />
+    <Scheduling::Widget::Stage
+      @index={{5}}
+      @isActive={{this.isEnteringDetails}}
+      @label="your information"
+    />
+  </div>
+  <div class="object-page">
+    services here
+  </div>
+</div>
