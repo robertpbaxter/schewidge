@@ -1,0 +1,15 @@
+<div class="stage-wrapper {{if this.isDisabled 'disabled'}}">
+  <span class="stage {{if @isActive 'active'}}">
+    <div class="circle">{{@index}}</div>{{@label}}
+  </span>
+
+  {{#if @selection}}
+    <span
+      class="text-link {{if @reselect 'btn-link'}}"
+      role="button"
+      {{on "click" this.reselect}}
+    >
+      {{@selection}}
+    </span>
+  {{/if}}
+</div>

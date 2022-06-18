@@ -1,0 +1,162 @@
+/* Not sure if I'd have time to set up a postcss or not*/
+
+/* COLORS */
+:root {
+  --bg-light-gray: #ebedee;
+  --bg-white: #ffffff;
+  --text-blue: #5687bd;
+  --text-dark-gray: #454d53;
+  --text-dark-gray: #454d53;
+  --text-gray: #98a0a9;
+  --text-light-gray: #ebedee;
+}
+
+body {
+  background: var(--bg-white);
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif !important;
+  font: var(--text-dark-gray);
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.7;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  opacity: 0.3;
+  padding: 10px;
+}
+
+h3 {
+  margin: 0;
+}
+
+/* NAVBAR */
+.header {
+  align-items: flex-end;
+  border-bottom: 1px solid var(--text-light-gray);
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  padding-bottom: 5px;
+  text-align: left;
+  width: 100%;
+}
+
+.breadcrumb-1 {
+  flex-shrink: 1;
+  margin-left: 10px;
+}
+
+.breadcrumb-2 {
+  flex-grow: 1;
+  font: var(--text-gray);
+}
+
+button.btn-icon {
+  background: transparent;
+  border: none;
+  height: 40px;
+  margin: 5px;
+  width: 40px;
+}
+
+/* WIDGET */
+.widget {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.sidebar {
+  border-right: 1px solid var(--text-light-gray);
+  padding: 25px 15px;
+  width: 220px;
+}
+
+.stage-wrapper {
+  margin-bottom: 10px;
+}
+
+.stage {
+  align-items: center;
+  display: flex;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.active .circle {
+  border: 2px solid var(--text-blue);
+  color: var(--text-blue);
+}
+
+.disabled {
+  color: var(--text-light-gray);
+}
+.disabled .circle {
+  border-color: var(--text-light-gray);
+  color: var(--text-light-gray);
+}
+
+.text-link {
+  color: var(--text-blue);
+  font-size: 0.8em;
+  font-weight: 300;
+  margin-left: 34px;
+}
+
+.btn-link {
+  cursor: pointer;
+}
+
+.object-page {
+  background: var(--bg-light-gray);
+  flex: 1 1 auto;
+  padding: 15px;
+}
+
+/* ICONS */
+
+.circle {
+  background: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--text-dark-gray);
+  height: 12px;
+  line-height: 1.1em;
+  margin: 0 5px;
+  padding: 3px;
+  text-align: center;
+  width: 12px;
+}
+
+.icon-close {
+  position: absolute;
+  right: 36px;
+  top: 20px;
+}
+.icon-close:before,
+.icon-close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 15px;
+  width: 2px;
+  background: var(--text-dark-gray);
+}
+.icon-close:before {
+  align-items: stretch;
+  transform: rotate(45deg);
+}
+.icon-close:after {
+  transform: rotate(-45deg);
+}
