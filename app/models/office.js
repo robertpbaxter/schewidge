@@ -19,4 +19,11 @@ export default class OfficeModel extends Model {
   get cityStateZip() {
     return `${this.city}, ${this.state} ${this.zip}`;
   }
+
+  get coords() {
+    const { lat, lng } = this.geolocation;
+    // Just to show something other than open water for virtual visits
+    if (lat !== '0.0' || lng !== '0.0') return this.geolocation;
+    return { lat: 34.03266746576298, lng: -118.46818504588234 };
+  }
 }

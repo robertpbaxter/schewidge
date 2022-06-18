@@ -5,8 +5,8 @@
         @disableDefaultUI={{true}}
         @gestureHandling="none"
         @keyboardShortcuts={{false}}
-        @lat={{location.geolocation.lat}}
-        @lng={{location.geolocation.lng}}
+        @lat={{location.coords.lat}}
+        @lng={{location.coords.lng}}
       />
       <h1>{{location.name}}</h1>
       {{#if location.hasPhysicalAddress}}
