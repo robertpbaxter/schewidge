@@ -3,13 +3,22 @@
     <div class="circle">{{@index}}</div>{{@label}}
   </span>
 
-  {{#if @selection}}
+  {{#if @primaryValue}}
     <span
       class="text-link {{if @reselect 'btn-link'}}"
       role="button"
       {{on "click" this.reselect}}
     >
-      {{@selection}}
+      {{@primaryValue}}
+    </span>
+  {{/if}}
+  {{#if @secondaryValue}}
+    <span
+      class="text-link {{if @reselect 'btn-link'}}"
+      role="button"
+      {{on "click" this.reselect}}
+    >
+      {{@secondaryValue}}
     </span>
   {{/if}}
 </div>
