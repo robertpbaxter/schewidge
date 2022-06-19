@@ -7,20 +7,25 @@
         @keyboardShortcuts={{false}}
         @lat={{location.coords.lat}}
         @lng={{location.coords.lng}}
-      />
-      <h1>{{location.name}}</h1>
-      {{#if location.hasPhysicalAddress}}
-        <p>{{location.street}}</p>
-        <p>{{location.cityStateZip}}</p>
-      {{/if}}
-      <p>{{location.phone}}</p>
-      <button
-        class="btn"
-        type="button"
-        {{on "click" (fn @selectLocation location)}}
+        as |map|
       >
-        Select
-      </button>
+        <map.marker @lat={{location.coords.lat}} @lng={{location.coords.lng}} />
+      </GMap>
+      <div data-test-location-card-body>
+        <h1>{{location.name}}</h1>
+        {{#if location.hasPhysicalAddress}}
+          <p>{{location.street}}</p>
+          <p>{{location.cityStateZip}}</p>
+        {{/if}}
+        <p>{{location.phone}}</p>
+        <button
+          class="btn"
+          type="button"
+          {{on "click" (fn @selectLocation location)}}
+        >
+          Select
+        </button>
+      </div>
     </div>
   {{/each}}
 </div>
