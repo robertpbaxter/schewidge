@@ -5,7 +5,7 @@ module('Unit | Adapter | office', function (hooks) {
   setupTest(hooks);
 
   test('it exists', function (assert) {
-    let adapter = this.owner.lookup('adapter:office');
+    const adapter = this.owner.lookup('adapter:office');
     assert.ok(adapter);
   });
 });

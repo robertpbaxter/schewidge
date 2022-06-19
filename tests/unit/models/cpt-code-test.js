@@ -4,10 +4,9 @@ import { setupTest } from 'ember-qunit';
 module('Unit | Model | cpt code', function (hooks) {
   setupTest(hooks);
 
-  // Replace this with your real tests.
-  test('it exists', function (assert) {
-    let store = this.owner.lookup('service:store');
-    let model = store.createRecord('cpt-code', {});
-    assert.ok(model);
+  test('it displays a string for duration in minutes', function (assert) {
+    const store = this.owner.lookup('service:store');
+    const model = store.createRecord('cpt-code', { duration: 15 });
+    assert.equal(model.durationInMinutes, '15 minutes');
   });
 });
