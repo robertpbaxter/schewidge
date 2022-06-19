@@ -18,7 +18,7 @@ module(
     };
 
     const template = hbs`
-      <Scheduling::Widget::Stage
+      <Scheduling::Widget::Sidebar::Stage
         @index={{this.index}}
         @isActive={{this.isActive}}
         @label={{this.label}}

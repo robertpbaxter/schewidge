@@ -1,40 +1,15 @@
 <div class="widget">
-  <div data-test-widget-sidebar class="sidebar">
-    <Scheduling::Widget::Stage
-      data-test-done-loading={{this.hasLoaded}}
-      @hasLoaded={{this.hasLoaded}}
-      @index={{1}}
-      @label="clinician"
-      @primaryValue={{this.clinician.nameWithTitle}}
-    />
-    <Scheduling::Widget::Stage
-      @index={{2}}
-      @isActive={{this.isSelectingService}}
-      @label="select a service"
-      @primaryValue={{this.selectedService.description}}
-      @secondaryValue={{this.selectedService.durationInMinutes}}
-      @reselect={{this.selectService}}
-    />
-    <Scheduling::Widget::Stage
-      @index={{3}}
-      @isActive={{this.isSelectingLocation}}
-      @label="select a location"
-      @primaryValue={{this.selectedLocation.name}}
-      @reselect={{this.selectLocation}}
-    />
-    <Scheduling::Widget::Stage
-      @index={{4}}
-      @isActive={{this.isSelectingDateTime}}
-      @label="select date & time"
-      @primaryValue={{this.dateTime}}
-      @reselect={{this.selectDateTime}}
-    />
-    <Scheduling::Widget::Stage
-      @index={{5}}
-      @isActive={{this.isEnteringDetails}}
-      @label="your information"
-    />
-  </div>
+  <Scheduling::Widget::Sidebar
+    data-test-done-loading={{this.hasLoaded}}
+    @clinician={{this.clinician}}
+    @hasLoaded={{this.hasLoaded}}
+    @selectDateTime={{this.selectDateTime}}
+    @selectLocation={{this.selectLocation}}
+    @selectService={{this.selectService}}
+    @selectedDateTime={{this.selectedDateTime}}
+    @selectedLocation={{this.selectedLocation}}
+    @selectedService={{this.selectedService}}
+  />
   <div data-test-widget-object-page class="object-page">
     {{#if this.isSelectingService}}
       <Scheduling::Widget::Services

@@ -1,0 +1,35 @@
+<div data-test-widget-sidebar class="sidebar" ...attributes>
+  <Scheduling::Widget::Sidebar::Stage
+    @hasLoaded={{@hasLoaded}}
+    @index={{1}}
+    @label="clinician"
+    @primaryValue={{@clinician.nameWithTitle}}
+  />
+  <Scheduling::Widget::Sidebar::Stage
+    @index={{2}}
+    @isActive={{this.isSelectingService}}
+    @label="select a service"
+    @primaryValue={{@selectedService.description}}
+    @secondaryValue={{@selectedService.durationInMinutes}}
+    @reselect={{@selectService}}
+  />
+  <Scheduling::Widget::Sidebar::Stage
+    @index={{3}}
+    @isActive={{this.isSelectingLocation}}
+    @label="select a location"
+    @primaryValue={{@selectedLocation.name}}
+    @reselect={{@selectLocation}}
+  />
+  <Scheduling::Widget::Sidebar::Stage
+    @index={{4}}
+    @isActive={{this.isSelectingDateTime}}
+    @label="select date & time"
+    @primaryValue={{@selectedDateTime}}
+    @reselect={{@selectDateTime}}
+  />
+  <Scheduling::Widget::Sidebar::Stage
+    @index={{5}}
+    @isActive={{this.isEnteringDetails}}
+    @label="your information"
+  />
+</div>

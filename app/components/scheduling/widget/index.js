@@ -43,6 +43,8 @@ export default class SchedulingWidgetComponent extends Component {
     return !!this.selectedLocation && !this.selectedDateTime;
   }
 
+  // TODO: Add remaining getters for other states
+
   async getClinician() {
     try {
       this.clinician = await this.store.find('clinician', this.clinicianId);
