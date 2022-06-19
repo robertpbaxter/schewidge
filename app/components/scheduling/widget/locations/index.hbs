@@ -1,6 +1,6 @@
 <div class="locations-wrapper">
   {{#each @locations as |location|}}
-    <div class="location-card">
+    <div data-test-location-card={{location.id}} class="location-card">
       <GMap
         @disableDefaultUI={{true}}
         @gestureHandling="none"
@@ -19,6 +19,7 @@
         {{/if}}
         <p>{{location.phone}}</p>
         <button
+          data-test-select-location
           class="btn"
           type="button"
           {{on "click" (fn @selectLocation location)}}

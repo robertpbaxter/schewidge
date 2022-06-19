@@ -1,37 +1,73 @@
-import { module, skip, test } from 'qunit';
+import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, waitFor } from '@ember/test-helpers';
+import { setupMirage } from 'ember-cli-mirage/test-support';
+import { click, render, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | scheduling/widget', function (hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
 
   const template = hbs`
       <Scheduling::Widget />
     `;
 
-  // Note to the reviewers: I noticed that browser tests were still tapping into the API, so I was going to build out the test cases to showcase how to prevent timing flakes. Headless tests won't work like this, so I'll just install mirage instead.
-  skip('it displays the sidebar', async function (assert) {
-    await render(template);
-    // Waiting for selectors to appear is prone to flakiness in larger, more complex applications
-    // Setting up attrs that resolve loading states makes better tests (in an ideal world)
-    await waitFor('[data-test-widget-sidebar] [data-test-done-loading]');
-
-    assert
-      .dom('[data-test-widget-sidebar]')
-      .hasText(
-        '1clinician Johnny Appleseed 2select a service 3select a location 4select date & time 5your information'
-      );
+  hooks.beforeEach(function () {
+    this.server.create('clinician', {
+      firstName: 'Scooby',
+      lastName: 'Doo',
+      suffix: 'DDS',
+    });
+    this.server.create('cptCode', {
+      description: 'Professional Meddling',
+      duration: '25',
+      string: 'Free',
+      callToBook: false,
+    });
+    this.server.create('office', {
+      cityStateZip: 'Fictional City, State Zip',
+      geolocation: { lat: '23.5', lng: '21.5' },
+      hasPhysicalAddress: true,
+      name: 'The Mystery Machine',
+      phone: '(555) 555-5555',
+      street: "Wherever it's parked",
+    });
   });
 
-  skip('it displays service options', async function (assert) {
+  // This widget assignment is a prime example of an integration test that doesn't need to be converted into an acceptance test / E2E. It provides a high degree of test confidence and performs better since it's more lightweight.
+  test('it schedules an appointment', async function (assert) {
     await render(template);
+
     await waitFor('[data-test-widget-object-page] [data-test-done-loading]');
 
     assert
       .dom('[data-test-widget-object-page]')
       .hasText(
-        'Psychiatric Diagnostic Evaluation 50 minutes Select Intro Call 15 minutes Select'
+        'Professional Meddling 25 minutes Select',
+        'the object page is populated with services'
       );
+
+    await click('[data-test-select-service]');
+
+    assert
+      .dom('[data-test-widget-object-page]')
+      .hasText(
+        'To navigate, press the arrow keys. The Mystery Machine (555) 555-5555 Select',
+        'the object page is populated with locations'
+      );
+
+    await click('[data-test-select-location]');
+
+    assert
+      .dom('[data-test-widget-object-page]')
+      .hasText('', 'the object page is populated with a datetime picker');
+
+    assert
+      .dom('[data-test-widget-sidebar]')
+      .hasText(
+        '1clinician Scooby Doo, DDS 2select a service Professional Meddling 25 minutes 3select a location The Mystery Machine 4select date & time 5your information',
+        'sidebar has populated with all information'
+      );
+    // TODO: Finish test once widget is complete
   });
 });
