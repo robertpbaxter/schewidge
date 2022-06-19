@@ -24,6 +24,13 @@ export default class SchedulingWidgetComponent extends Component {
     this.getServices();
   }
 
+  //TODO: Add loading spinner and loading states
+
+  get hasLoaded() {
+    // Generalization: Without a clinician or service list, this app can't continue. It's possible that a clinician could return zero services, but I don't know if your API prevents that or not. I'm going to assume you don't let that happen though
+    return !!this.clinician && !!this.services?.length;
+  }
+
   get isSelectingService() {
     return !!this.clinician && !this.selectedService;
   }

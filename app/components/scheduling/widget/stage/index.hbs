@@ -1,6 +1,7 @@
 <div
   data-test-widget-stage
   class="stage-wrapper {{if this.isDisabled 'disabled'}}"
+  ...attributes
 >
   <span class="stage {{if @isActive 'active'}}">
     <div class="circle">{{@index}}</div>{{@label}}

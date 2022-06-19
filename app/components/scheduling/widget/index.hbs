@@ -1,6 +1,8 @@
 <div class="widget">
   <div data-test-widget-sidebar class="sidebar">
     <Scheduling::Widget::Stage
+      data-test-done-loading={{this.hasLoaded}}
+      @hasLoaded={{this.hasLoaded}}
       @index={{1}}
       @label="clinician"
       @primaryValue={{this.clinician.nameWithTitle}}
@@ -33,9 +35,10 @@
       @label="your information"
     />
   </div>
-  <div class="object-page">
+  <div data-test-widget-object-page class="object-page">
     {{#if this.isSelectingService}}
       <Scheduling::Widget::Services
+        data-test-done-loading={{this.hasLoaded}}
         @selectService={{this.selectService}}
         @services={{this.services}}
       />

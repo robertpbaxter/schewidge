@@ -1,17 +1,19 @@
-{{#each @services as |service|}}
-  <div data-test-service-card class="service-card">
-    <div class="card-body">
-      <h1>{{service.description}}</h1>
-      <h3>{{service.durationInMinutes}}</h3>
+<div class="services-wrapper" ...attributes>
+  {{#each @services as |service|}}
+    <div data-test-service-card class="service-card">
+      <div class="card-body">
+        <h1>{{service.description}}</h1>
+        <h3>{{service.durationInMinutes}}</h3>
+      </div>
+      <div class="card-actions">
+        <button
+          class="btn"
+          type="button"
+          {{on "click" (fn @selectService service)}}
+        >
+          Select
+        </button>
+      </div>
     </div>
-    <div class="card-actions">
-      <button
-        class="btn"
-        type="button"
-        {{on "click" (fn @selectService service)}}
-      >
-        Select
-      </button>
-    </div>
-  </div>
-{{/each}}
+  {{/each}}
+</div>
